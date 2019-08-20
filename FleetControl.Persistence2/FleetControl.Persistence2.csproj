@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Configurations\FleetControl\**" />
+    <Compile Remove="Configurations\Northwind\**" />
+    <EmbeddedResource Remove="Configurations\FleetControl\**" />
+    <EmbeddedResource Remove="Configurations\Northwind\**" />
+    <None Remove="Configurations\FleetControl\**" />
+    <None Remove="Configurations\Northwind\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20180607065932_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180607065932_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180611041835_User.cs" />
+    <Compile Remove="Migrations\20180611041835_User.Designer.cs" />
+    <Compile Remove="Migrations\FleetControlContextModelSnapshot.cs" />
+    <Compile Remove="FleetControlDbContext.cs" />
+    <Compile Remove="FleetControlDbContextFactory.cs" />
+    <Compile Remove="FleetControlInitializer.cs" />
+    <Compile Remove="Migrations\NorthwindContextModelSnapshot.cs" />
+    <Compile Remove="NorthwindDbContext.cs" />
+    <Compile Remove="NorthwindDbContextFactory.cs" />
+    <Compile Remove="NorthwindInitializer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FleetControl.Core\FleetControl.Core.csproj" />
+    <ProjectReference Include="..\FleetControl.Application\FleetControl.Application.csproj" />
+    <ProjectReference Include="..\FleetControl.Domain\FleetControl.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

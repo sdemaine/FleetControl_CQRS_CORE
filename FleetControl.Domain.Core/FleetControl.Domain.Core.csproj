@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\FleetControl\DAM\**" />
+    <Compile Remove="Entities\FleetControl\TransactionExports\**" />
+    <Compile Remove="Entities\FleetControl\WinC6\**" />
+    <EmbeddedResource Remove="Entities\FleetControl\DAM\**" />
+    <EmbeddedResource Remove="Entities\FleetControl\TransactionExports\**" />
+    <EmbeddedResource Remove="Entities\FleetControl\WinC6\**" />
+    <None Remove="Entities\FleetControl\DAM\**" />
+    <None Remove="Entities\FleetControl\TransactionExports\**" />
+    <None Remove="Entities\FleetControl\WinC6\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FileHelpers" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FleetControl.Core.Core\FleetControl.Core.Core.csproj" />
+  </ItemGroup>
+
+</Project>

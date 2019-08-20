@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--<Import Project="..\FleetControl.CodeAnalysis.targets" />-->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>FleetControl.Common</AssemblyName>
+    <RootNamespace>FleetControl.Common</RootNamespace>
+  </PropertyGroup>
+</Project>

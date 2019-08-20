@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="FleetControl\**" />
+    <Compile Remove="Northwind\**" />
+    <EmbeddedResource Remove="FleetControl\**" />
+    <EmbeddedResource Remove="Northwind\**" />
+    <None Remove="FleetControl\**" />
+    <None Remove="Northwind\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>

@@ -8,15 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FleetControl.Application.Queries
+namespace FleetControl.Application.Commands.Customers.UpdateCustomer
 {
-    public class GetFleetCustomer_Dto : IHaveCustomMapping
+    public class UpdateCustomerCommand_Dto : IHaveCustomMapping
     {
         public int BAID { get; set; }
 
         public string LiftingNumber { get; set; }
 
-        public int? VoyagerAccountId { get; set; }   //.. this is going to be the primary key within the Voyager application
+        public int? VoyagerAccountId { get; set; }
 
         public string CustomerName { get; set; }
 
@@ -49,8 +49,6 @@ namespace FleetControl.Application.Queries
         public string WetHosing { get; set; }
 
         public string NYCAccount { get; set; }
-
-        public DateTime? LastActivityDate { get; set; }
 
         public string SpecialCustomerCode { get; set; }
 
@@ -93,15 +91,7 @@ namespace FleetControl.Application.Queries
 
         public HardSoftExceptionModes PurchaseDayMode { get; set; }
 
-        public DateTime? PurchaseFromTimeBand1 { get; set; }
-
-        public DateTime? PurchaseToTimeBand1 { get; set; }
-
         public HardSoftExceptionModes PurchaseDayBand1Mode { get; set; }
-
-        public DateTime? PurchaseFromTimeBand2 { get; set; }
-
-        public DateTime? PurchaseToTimeBand2 { get; set; }
 
         public HardSoftExceptionModes PurchaseDayBand2Mode { get; set; }
 
@@ -173,7 +163,8 @@ namespace FleetControl.Application.Queries
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Customer, GetFleetCustomer_Dto>()
+            configuration.CreateMap<Customer, UpdateCustomerCommand_Dto>()
+                .ReverseMap()
                 ;
         }
     }

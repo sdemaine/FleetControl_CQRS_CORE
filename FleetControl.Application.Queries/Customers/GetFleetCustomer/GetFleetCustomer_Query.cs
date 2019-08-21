@@ -4,11 +4,11 @@ namespace FleetControl.Application.Queries
 {
     public class GetFleetCustomer_Query : IRequest<GetFleetCustomer_ViewModel>
     {
-        public int Baid { get; }
+        public int CustomerId { get; }
 
-        public GetFleetCustomer_Query(int baid)
+        public GetFleetCustomer_Query(int customerId)
         {
-            Baid = baid;
+            CustomerId = customerId;
         }
     }
 }

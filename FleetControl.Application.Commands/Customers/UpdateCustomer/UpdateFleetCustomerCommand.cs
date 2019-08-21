@@ -5,25 +5,50 @@ using FleetControl.Application.Interfaces;
 using FleetControl.Domain;
 using System.Threading;
 using System.Threading.Tasks;
+using FleetControl.Application.Commands.Customers.UpdateCustomer;
+using System.Linq;
+using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace FleetControl.Application.Commands.UpdateCustomer
 {
     public class UpdateFleetCustomerCommand : IRequest
     {
-        public int Id { get; set; }
-        
+        public int Id { get; }
+
+        public JsonPatchDocument PatchDoc { get; }
+
+        public UpdateFleetCustomerCommand(int id, JsonPatchDocument patchDoc)
+        {
+            Id = id;
+            PatchDoc = patchDoc;
+        }
+
 
         public class Handler : IRequestHandler<UpdateFleetCustomerCommand, Unit>
         {
             private readonly IFleetControlDbContext _context;
+            private readonly IMapper _mapper;
 
-            public Handler(IFleetControlDbContext context)
+            public Handler(IFleetControlDbContext context, IMapper mapper)
             {
                 _context = context;
+                _mapper = mapper;
             }
 
             public async Task<Unit> Handle(UpdateFleetCustomerCommand request, CancellationToken cancellationToken)
             {
+                var customer = await _context.Customer.FirstOrDefaultAsync(x => x.Id == request.Id);
+
+                if (customer == null)
+                {
+                    throw new NotFoundException("Customer", request.Id);
+                }
+
+                request.PatchDoc.ApplyTo(customer);
+                _context.Customer.Update(customer);
+                
+
                 //var entity = await _context.Customer
                 //    .SingleOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
 
@@ -44,7 +69,7 @@ namespace FleetControl.Application.Commands.UpdateCustomer
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return Unit.Value;
+                return Unit.Value; // Unit.Value;
             }
         }
     }

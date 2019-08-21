@@ -1,6 +1,9 @@
 using FleetControl.Application.Commands.Customers.CreateCustomer;
+using FleetControl.Application.Commands.Customers.UpdateCustomer;
+using FleetControl.Application.Commands.UpdateCustomer;
 using FleetControl.Application.Queries;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,12 +19,12 @@ namespace FleetControl.WebUI.Controllers
             return Ok(await Mediator.Send(new GetFleetCustomersList_Query(queryRequest)));
         }
 
-        [HttpGet("{baid}")]
+        [HttpGet("{customerId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<GetFleetCustomerDetail_Model>> Get(int baid)
+        public async Task<ActionResult<GetFleetCustomerDetail_Model>> Get(int customerId)
         {
-            return Ok(await Mediator.Send(new GetFleetCustomer_Query(baid)));
+            return Ok(await Mediator.Send(new GetFleetCustomer_Query(customerId)));
         }
 
         [HttpPost]
@@ -29,6 +32,15 @@ namespace FleetControl.WebUI.Controllers
         public async Task<ActionResult<GetFleetCustomerDetail_Model>> CreateCustomer(CreateFleetCustomer_Dto customer)
         {
             await Mediator.Send(new CreateFleetCustomer_Command(customer));
+            return Ok();
+        }
+
+        [HttpPatch]
+        [Route("{customerId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<GetFleetCustomerDetail_Model>> UpdateCustomer(int customerId, [FromBody] JsonPatchDocument patchDoc)
+        {
+            await Mediator.Send(new UpdateFleetCustomerCommand(customerId, patchDoc));
             return Ok();
         }
     }

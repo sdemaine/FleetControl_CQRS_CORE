@@ -22,7 +22,7 @@ namespace FleetControl.Application.Queries
 
         public async Task<GetFleetCustomer_ViewModel> Handle(GetFleetCustomer_Query request, CancellationToken cancellationToken)
         {
-            var customer = await _context.Customer.FirstOrDefaultAsync(x => x.BAID == request.Baid);
+            var customer = await _context.Customer.FirstOrDefaultAsync(x => x.Id == request.CustomerId);
             return new GetFleetCustomer_ViewModel(1, "previousPage", "nextPage", _mapper.Map<GetFleetCustomer_Dto>(customer));
         }
     }

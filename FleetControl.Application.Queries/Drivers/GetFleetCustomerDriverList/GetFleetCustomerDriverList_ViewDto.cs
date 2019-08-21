@@ -1,4 +1,7 @@
-﻿using FleetControl.Core;
+﻿using AutoMapper;
+using FleetControl.Application.Interfaces.Mapping;
+using FleetControl.Core;
+using FleetControl.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FleetControl.Application.Queries.Drivers
 {
-    public class GetFleetCustomerDriverList_ViewDto
+    public class GetFleetCustomerDriverList_ViewDto : IHaveCustomMapping
     {
         public string ExternalDriverId { get; set; }
 
@@ -84,5 +87,11 @@ namespace FleetControl.Application.Queries.Drivers
         public bool IsVoyager { get; set; }
 
         public bool ExistsInVoyager { get; set; }
+
+        public void CreateMappings(Profile configuration)
+        {
+            configuration.CreateMap<Driver, GetFleetCustomerDriverList_ViewDto>()
+                ;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FleetControl.Core;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -9,7 +10,7 @@ namespace FleetControl.Domain
 {
     [DataContract]
     [Table("Customer")]
-    public class Customer : EntityBase
+    public class Customer : EntityBase, IValidatableObject
     {
         public Customer()
         {
@@ -351,5 +352,50 @@ namespace FleetControl.Domain
 
         [DataMember]
         public int? CardAddressId { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var results = new List<ValidationResult>();
+            //if (!IsValidDate(Date))
+            //{
+            //    results.Add(new ValidationResult("Date must be within the last year."));
+            //}
+            if (!IsValidResourceGroup(BillingCode))
+            {
+                results.Add(new ValidationResult($"Invalid resource group"));
+            }
+            return results;
+        }
+
+
+
+        public enum Group
+        {
+            A,
+            B,
+            C
+        }
+
+        bool IsValidDate(string date)
+        {
+            if (!DateTime.TryParse(date, out var dateTime))
+            {
+                return false;
+            }
+            // return false if over 1 year
+            return dateTime >= DateTime.Now.AddYears(-1);
+        }
+
+        bool IsValidResourceGroup(string group)
+        {
+            foreach (var c in Enum.GetValues(typeof(Group)))
+            {
+                if (string.Equals(group.Trim(), $"{c}", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

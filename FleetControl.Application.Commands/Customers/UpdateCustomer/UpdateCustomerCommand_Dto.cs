@@ -4,19 +4,24 @@ using FleetControl.Core;
 using FleetControl.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FleetControl.Application.Commands.Customers.UpdateCustomer
 {
-    public class UpdateCustomerCommand_Dto : IHaveCustomMapping
+    public class UpdateCustomerCommand_Dto : IHaveCustomMapping, IValidatableObject
     {
+        #region Properties
         public int BAID { get; set; }
 
         public string LiftingNumber { get; set; }
 
         public int? VoyagerAccountId { get; set; }
+
+
+        [Required, StringLength(25, ErrorMessage = "Customer name can only be 25 characters long")]
 
         public string CustomerName { get; set; }
 
@@ -161,11 +166,50 @@ namespace FleetControl.Application.Commands.Customers.UpdateCustomer
 
         public int? CardAddressId { get; set; }
 
+        #endregion
+
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<Customer, UpdateCustomerCommand_Dto>()
                 .ReverseMap()
                 ;
+        }
+
+        public IEnumerable<ValidationResult> Validate(System.ComponentModel.DataAnnotations.ValidationContext validationContext)
+        {
+            var results = new List<ValidationResult>();
+
+            //if (!IsValidDate(Date))
+            //{
+            //    results.Add(new ValidationResult("Date must be within the last year."));
+            //}
+
+            if (!IsValidResourceGroup(BillingCode))
+            {
+                results.Add(new ValidationResult($"Invalid resource group"));
+            }
+
+            return results;
+        }
+
+
+
+        public enum Group
+        {
+            A,
+            B,
+            C
+        }
+        bool IsValidResourceGroup(string group)
+        {
+            foreach (var c in Enum.GetValues(typeof(Group)))
+            {
+                if (string.Equals(group.Trim(), $"{c}", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

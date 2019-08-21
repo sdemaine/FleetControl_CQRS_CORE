@@ -1,6 +1,7 @@
 using FleetControl.Application.Commands.Customers.CreateCustomer;
 using FleetControl.Application.Commands.Customers.UpdateCustomer;
 using FleetControl.Application.Commands.UpdateCustomer;
+using FleetControl.Application.Interfaces;
 using FleetControl.Application.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -12,6 +13,14 @@ namespace FleetControl.WebUI.Controllers
     [Route("api/FleetCustomers")]
     public class FleetCustomersController : BaseController
     {
+        private IFleetControlDbContext _context;
+
+        public FleetCustomersController(IFleetControlDbContext context)
+        {
+            _context = context;
+        }
+
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<GetFleetCustomersList_ViewModel>> GetAll([FromQuery] QueryRequestModel queryRequest)
@@ -40,7 +49,7 @@ namespace FleetControl.WebUI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<GetFleetCustomerDetail_Model>> UpdateCustomer(int customerId, [FromBody] JsonPatchDocument patchDoc)
         {
-            await Mediator.Send(new UpdateFleetCustomerCommand(customerId, patchDoc));
+            await Mediator.Send(new UpdateFleetCustomerCommand(customerId, patchDoc, _context));
             return Ok();
         }
     }

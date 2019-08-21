@@ -7,17 +7,8 @@ namespace FleetControl.Application.Commands.UpdateCustomer
     {
         public UpdateCustomerCommandValidator()
         {
-            //RuleFor(x => x.Id).MaximumLength(5).NotEmpty();
-            //RuleFor(x => x.Address).MaximumLength(60);
-            //RuleFor(x => x.City).MaximumLength(15);
-            //RuleFor(x => x.CompanyName).MaximumLength(40).NotEmpty();
-            //RuleFor(x => x.ContactName).MaximumLength(30);
-            //RuleFor(x => x.ContactTitle).MaximumLength(30);
-            //RuleFor(x => x.Country).MaximumLength(15);
-            //RuleFor(x => x.Fax).MaximumLength(24).NotEmpty();
-            //RuleFor(x => x.Phone).MaximumLength(24).NotEmpty();
-            //RuleFor(x => x.PostalCode).MaximumLength(10);
-            //RuleFor(x => x.Region).MaximumLength(15);
+            RuleFor(x => x.Customer.CustomerName).MaximumLength(50).NotEmpty();
+
 
             //RuleFor(c => c.PostalCode).Matches(@"^\d{4}$")
             //    .When(c => c.Country == "Australia")

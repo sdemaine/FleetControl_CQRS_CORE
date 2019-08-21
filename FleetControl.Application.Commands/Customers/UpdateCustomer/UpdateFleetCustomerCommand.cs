@@ -9,19 +9,32 @@ using FleetControl.Application.Commands.Customers.UpdateCustomer;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace FleetControl.Application.Commands.UpdateCustomer
 {
     public class UpdateFleetCustomerCommand : IRequest
     {
+        private readonly IFleetControlDbContext _context;
+
         public int Id { get; }
 
         public JsonPatchDocument PatchDoc { get; }
 
-        public UpdateFleetCustomerCommand(int id, JsonPatchDocument patchDoc)
+        public Customer Customer { get; }
+
+        public UpdateFleetCustomerCommand(int id, JsonPatchDocument patchDoc, IFleetControlDbContext context)
         {
             Id = id;
             PatchDoc = patchDoc;
+            _context = context;
+
+            Customer = _context.Customer.FirstOrDefault(x => x.Id == id);
+            if (Customer == null) throw new Exception("Customer not found");
+
+            PatchDoc.ApplyTo(Customer);
+            
         }
 
 
@@ -38,38 +51,9 @@ namespace FleetControl.Application.Commands.UpdateCustomer
 
             public async Task<Unit> Handle(UpdateFleetCustomerCommand request, CancellationToken cancellationToken)
             {
-                var customer = await _context.Customer.FirstOrDefaultAsync(x => x.Id == request.Id);
-
-                if (customer == null)
-                {
-                    throw new NotFoundException("Customer", request.Id);
-                }
-
-                request.PatchDoc.ApplyTo(customer);
-                _context.Customer.Update(customer);
-                
-
-                //var entity = await _context.Customer
-                //    .SingleOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
-
-                //if (entity == null)
-                //{
-                //    throw new NotFoundException(nameof(Customer), request.Id);
-                //}
-
-                //entity.Address = request.Address;
-                //entity.City = request.City;
-                //entity.CompanyName = request.CompanyName;
-                //entity.ContactName = request.ContactName;
-                //entity.ContactTitle = request.ContactTitle;
-                //entity.Country = request.Country;
-                //entity.Fax = request.Fax;
-                //entity.Phone = request.Phone;
-                //entity.PostalCode = request.PostalCode;
-
+                _context.Customer.Update(request.Customer);
                 await _context.SaveChangesAsync(cancellationToken);
-
-                return Unit.Value; // Unit.Value;
+                return Unit.Value;
             }
         }
     }

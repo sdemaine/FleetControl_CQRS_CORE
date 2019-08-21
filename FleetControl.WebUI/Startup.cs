@@ -1,5 +1,6 @@
 using AutoMapper;
 using FleetControl.Application.Commands.CreateCustomer;
+using FleetControl.Application.Commands.UpdateCustomer;
 using FleetControl.Application.Infrastructure;
 using FleetControl.Application.Infrastructure.AutoMapper;
 using FleetControl.Application.Interfaces;
@@ -7,6 +8,8 @@ using FleetControl.Application.Queries;
 using FleetControl.Common;
 using FleetControl.Infrastructure;
 using FleetControl.Persistence;
+using FleetControl.WebUI.Filters;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,15 +57,15 @@ namespace FleetControl.WebUI
 
             services.AddMvc();
 
-            //services
-            //    .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            //    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateNorthwindCustomerCommandValidator>());
+            services
+                .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UpdateCustomerCommandValidator>());
 
 
             // This allows for the dependency injection of the config file. It is injected as type IOptions<ConnectionStringConfig>, and referenced with *.Value.NorthwindDatabase
             services.Configure<ConnectionStringConfig>(this.Configuration.GetSection("ConnectionStrings"));
-           
+            
 
             // Customise default API behavour
             services.Configure<ApiBehaviorOptions>(options =>

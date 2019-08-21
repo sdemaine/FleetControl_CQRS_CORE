@@ -23,19 +23,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetControl.Persistence", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetControl.WebUI", "FleetControl.WebUI\FleetControl.WebUI.csproj", "{F4EAEBDF-6312-4989-A5DA-A47B9DFFC3C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Common.Core", "FleetControl.Common.Core\FleetControl.Common.Core.csproj", "{DA00A4FD-B2B9-487C-AD42-23E393EFF8F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Common", "FleetControl.Common\FleetControl.Common.csproj", "{DA00A4FD-B2B9-487C-AD42-23E393EFF8F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Infrastructure.Core", "FleetControl.Infrastructure.Core\FleetControl.Infrastructure.Core.csproj", "{33A5A665-405C-4129-AAC2-777E89D6283A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Infrastructure", "FleetControl.Infrastructure\FleetControl.Infrastructure.csproj", "{33A5A665-405C-4129-AAC2-777E89D6283A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Application.Core", "FleetControl.Application.Core\FleetControl.Application.Core.csproj", "{39BEA832-0B1B-4617-A205-04BCF62694A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Application", "FleetControl.Application\FleetControl.Application.csproj", "{39BEA832-0B1B-4617-A205-04BCF62694A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Application.Commands.Core", "FleetControl.Application.Commands.Core\FleetControl.Application.Commands.Core.csproj", "{20551C3A-F037-4058-8983-A342757CE656}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Application.Commands", "FleetControl.Application.Commands\FleetControl.Application.Commands.csproj", "{20551C3A-F037-4058-8983-A342757CE656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Domain.Core", "FleetControl.Domain.Core\FleetControl.Domain.Core.csproj", "{FBED1FE8-C4EB-4A5D-8B3A-EC9CDFA9B148}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Domain", "FleetControl.Domain\FleetControl.Domain.csproj", "{FBED1FE8-C4EB-4A5D-8B3A-EC9CDFA9B148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Core.Core", "FleetControl.Core.Core\FleetControl.Core.Core.csproj", "{39644754-4008-40A9-9F1A-1B448028BA92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Core", "FleetControl.Core\FleetControl.Core.csproj", "{39644754-4008-40A9-9F1A-1B448028BA92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Application.Queries.Core", "FleetControl.Application.Queries.Core\FleetControl.Application.Queries.Core.csproj", "{2682FD7F-245E-4749-9A10-DF10E41328AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetControl.Application.Queries", "FleetControl.Application.Queries\FleetControl.Application.Queries.csproj", "{2682FD7F-245E-4749-9A10-DF10E41328AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

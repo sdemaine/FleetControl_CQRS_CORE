@@ -1,5 +1,6 @@
 ﻿using System;
 using FleetControl.Application.Interfaces;
+using FleetControl.Core;
 using FleetControl.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -118,6 +119,13 @@ namespace FleetControl.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(FleetControlDbContext).Assembly);
+        }
+
+        public void AddToDatabase<T>(T entity) where T : EntityBase
+        {
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedByUserId = 0; // TODO: set CreatedByUserId from appContext
+            this.Add<T>(entity);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -1,34 +1,31 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <!--<Import Project="..\FleetControl.CodeAnalysis.targets" />-->
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>FleetControl.Domain</AssemblyName>
-    <RootNamespace>FleetControl.Domain</RootNamespace>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Entities\FleetControl\DAM\**" />
+    <Compile Remove="Entities\FleetControl\TransactionExports\**" />
     <Compile Remove="Entities\FleetControl\WinC6\**" />
     <EmbeddedResource Remove="Entities\FleetControl\DAM\**" />
+    <EmbeddedResource Remove="Entities\FleetControl\TransactionExports\**" />
     <EmbeddedResource Remove="Entities\FleetControl\WinC6\**" />
     <None Remove="Entities\FleetControl\DAM\**" />
+    <None Remove="Entities\FleetControl\TransactionExports\**" />
     <None Remove="Entities\FleetControl\WinC6\**" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="FileHelpers" Version="3.4.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FleetControl.Core\FleetControl.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.2.0\ref\netcoreapp2.2\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Model\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FileHelpers" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FleetControl.Core\FleetControl.Core.csproj" />
+  </ItemGroup>
+
 </Project>

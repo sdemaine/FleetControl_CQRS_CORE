@@ -1,4 +1,5 @@
-﻿using FleetControl.Domain;
+﻿using FleetControl.Core;
+using FleetControl.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace FleetControl.Application.Interfaces
         DbSet<AuditEvent> AuditEvent { get; set; }
         DbSet<AuditHistory> AuditHistory { get; set; }
         DbSet<AuditHistoryDetail> AuditHistoryDetail { get; set; }
+
+
+
         DbSet<BusinessAssociate> BusinessAssociate { get; set; }
         DbSet<BusinessHours> BusinessHours { get; set; }
         DbSet<Card> Card { get; set; }
@@ -104,5 +108,9 @@ namespace FleetControl.Application.Interfaces
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+
+        void AddToDatabase<T>(T entity) where T : EntityBase;
+
+
     }
 }

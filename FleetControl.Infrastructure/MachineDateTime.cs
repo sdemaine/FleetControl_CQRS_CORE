@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FleetControl.Common;
+using System;
 
 namespace FleetControl.Infrastructure
 {

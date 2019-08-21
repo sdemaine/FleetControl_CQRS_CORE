@@ -50,9 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FleetControl.Application.Commands.Core\FleetControl.Application.Commands.Core.csproj" />
-    <ProjectReference Include="..\FleetControl.Application.Queries.Core\FleetControl.Application.Queries.Core.csproj" />
-    <ProjectReference Include="..\FleetControl.Infrastructure.Core\FleetControl.Infrastructure.Core.csproj" />
+    <ProjectReference Include="..\FleetControl.Application.Commands\FleetControl.Application.Commands.csproj" />
+    <ProjectReference Include="..\FleetControl.Application.Queries\FleetControl.Application.Queries.csproj" />
+    <ProjectReference Include="..\FleetControl.Infrastructure\FleetControl.Infrastructure.csproj" />
     <ProjectReference Include="..\FleetControl.Persistence\FleetControl.Persistence.csproj" />
   </ItemGroup>
 

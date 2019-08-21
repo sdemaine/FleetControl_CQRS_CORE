@@ -1,3 +1,4 @@
+using FleetControl.Application.Commands.Customers.CreateCustomer;
 using FleetControl.Application.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,14 @@ namespace FleetControl.WebUI.Controllers
         public async Task<ActionResult<GetFleetCustomerDetail_Model>> Get(int baid)
         {
             return Ok(await Mediator.Send(new GetFleetCustomer_Query(baid)));
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<GetFleetCustomerDetail_Model>> CreateCustomer(CreateFleetCustomer_Dto customer)
+        {
+            await Mediator.Send(new CreateFleetCustomer_Command(customer));
+            return Ok();
         }
     }
 }

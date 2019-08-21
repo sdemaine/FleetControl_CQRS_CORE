@@ -11,6 +11,12 @@ namespace FleetControl.Domain
     [Table("Customer")]
     public class Customer : EntityBase
     {
+        public Customer()
+        {
+            CreatedDate = DateTime.Now;
+            CreatedByUserId = 0;
+        }
+
         [DataMember]
         public int BAID { get; set; }
 

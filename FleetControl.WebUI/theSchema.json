@@ -1,0 +1,1092 @@
+﻿{
+  "x-generator": "NSwag v13.0.5.0 (NJsonSchema v10.0.22.0 (Newtonsoft.Json v11.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "produces": [
+    "text/plain",
+    "application/json",
+    "text/json"
+  ],
+  "paths": {
+    "/api/FleetCustomers/{customerId}/FleetCards": {
+      "get": {
+        "tags": [
+          "FleetCustomerCards"
+        ],
+        "operationId": "FleetCustomerCards_Get",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Skip",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Take",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "SearchQuery",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortBy",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortDirection",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "boolean",
+            "name": "ActiveOnly",
+            "in": "query",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Baid",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetFleetCustomerDriverList_ViewModel"
+              }
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/FleetCustomers/{customerId}/FleetDrivers": {
+      "get": {
+        "tags": [
+          "FleetCustomerDrivers"
+        ],
+        "operationId": "FleetCustomerDrivers_Get",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Skip",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Take",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "SearchQuery",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortBy",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortDirection",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "boolean",
+            "name": "ActiveOnly",
+            "in": "query",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Baid",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetFleetCustomerDriverList_ViewModel"
+              }
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/FleetCustomers": {
+      "get": {
+        "tags": [
+          "FleetCustomers"
+        ],
+        "operationId": "FleetCustomers_GetAll",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "Skip",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Take",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "SearchQuery",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortBy",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortDirection",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "boolean",
+            "name": "ActiveOnly",
+            "in": "query",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Baid",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetFleetCustomersList_ViewModel"
+            }
+          }
+        }
+      }
+    },
+    "/api/FleetCustomers/{customerId}": {
+      "get": {
+        "tags": [
+          "FleetCustomers"
+        ],
+        "operationId": "FleetCustomers_Get",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetFleetCustomerDetail_Model"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/FleetDrivers": {
+      "get": {
+        "tags": [
+          "FleetDrivers"
+        ],
+        "operationId": "FleetDrivers_GetAll",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "Skip",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Take",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "SearchQuery",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortBy",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "SortDirection",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "boolean",
+            "name": "ActiveOnly",
+            "in": "query",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "Baid",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetFleetCustomerDriverList_ViewModel"
+              }
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetFleetCustomerDriverList_ViewModel": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/QueryViewModel"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "drivers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetFleetCustomerDriverList_ViewDto"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GetFleetCustomerDriverList_ViewDto": {
+      "type": "object",
+      "required": [
+        "driverLevel2Id",
+        "sequence",
+        "menu",
+        "status",
+        "useCount",
+        "quantity",
+        "synchronized",
+        "isConsignment",
+        "isFuelMaster",
+        "isWinC6",
+        "isVoyager",
+        "existsInVoyager"
+      ],
+      "properties": {
+        "externalDriverId": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleInitial": {
+          "type": "string"
+        },
+        "pin": {
+          "type": "string"
+        },
+        "lastActivityDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lockCode": {
+          "type": "string"
+        },
+        "lockDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "theirEmployeeNumber": {
+          "type": "string"
+        },
+        "dailyTransactionLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverLevel2Id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverLevel3Id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverLevel4Id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverLevel5Id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverLevel6Id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverLevel7Id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "class": {
+          "type": "string"
+        },
+        "sequence": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "menu": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "$ref": "#/definitions/StatusMode"
+        },
+        "useCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "minVehc": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxVehc": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driverUserCode1": {
+          "type": "string"
+        },
+        "driverUserCode2": {
+          "type": "string"
+        },
+        "driverUserCode3": {
+          "type": "string"
+        },
+        "driverUserCode4": {
+          "type": "string"
+        },
+        "driverUserCode5": {
+          "type": "string"
+        },
+        "synchronized": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "submitPending": {
+          "type": "boolean"
+        },
+        "classId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isConsignment": {
+          "type": "boolean"
+        },
+        "externalDeleteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "isFuelMaster": {
+          "type": "boolean"
+        },
+        "isWinC6": {
+          "type": "boolean"
+        },
+        "isVoyager": {
+          "type": "boolean"
+        },
+        "existsInVoyager": {
+          "type": "boolean"
+        }
+      }
+    },
+    "StatusMode": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Active",
+        "Hold",
+        "Terminated",
+        "Pending"
+      ],
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "BooleanEnum": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "No",
+        "Yes"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "QueryViewModel": {
+      "type": "object",
+      "x-abstract": true,
+      "required": [
+        "recordCount"
+      ],
+      "properties": {
+        "recordCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "previousPage": {
+          "type": "string"
+        },
+        "nextPage": {
+          "type": "string"
+        }
+      }
+    },
+    "ProblemDetails": {
+      "type": "object",
+      "additionalProperties": {},
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      }
+    },
+    "GetFleetCustomersList_ViewModel": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/QueryViewModel"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "customers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetFleetCustomerList_Dto"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "GetFleetCustomerList_Dto": {
+      "type": "object",
+      "required": [
+        "baid",
+        "productUse",
+        "transactionDollarLimitMode",
+        "dailyDollarLimitMode",
+        "weeklyDollarLimitMode",
+        "monthlyDollarLimitMode",
+        "dailyTransactionLimitMode",
+        "weeklyTransactionLimitMode",
+        "monthlyTransactionLimitMode",
+        "purchaseDay",
+        "purchaseDayMode",
+        "purchaseDayBand1Mode",
+        "purchaseDayBand2Mode",
+        "odometerValidation",
+        "odometerType",
+        "orgLevelsUsed",
+        "departmentRequired",
+        "companySelectsPin",
+        "companySelectsCardNumber",
+        "companySelectsVehicleNumber",
+        "companySelectsDriverNumber",
+        "cardsTiedToEntity",
+        "cardPromptPattern",
+        "embossingOnCard",
+        "embossingElement1",
+        "embossingElement2",
+        "embossingElement3",
+        "internalCustomer",
+        "status",
+        "retailCustomer",
+        "poRequired",
+        "restrictionCode",
+        "isConsignment",
+        "minDriverNumber",
+        "maxDriverNumber",
+        "isFuelMaster",
+        "isWinC6",
+        "isVoyager",
+        "departmentRequiredForDriver",
+        "departmentRequiredForCard",
+        "departmentRequiredForVehicle"
+      ],
+      "properties": {
+        "baid": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "liftingNumber": {
+          "type": "string"
+        },
+        "voyagerAccountId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "embossedCustomerName": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "usState": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "creditLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lockCode": {
+          "type": "string"
+        },
+        "lockDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "salesPerson": {
+          "type": "string"
+        },
+        "billingCode": {
+          "type": "string"
+        },
+        "wetHosing": {
+          "type": "string"
+        },
+        "nycAccount": {
+          "type": "string"
+        },
+        "lastActivityDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "specialCustomerCode": {
+          "type": "string"
+        },
+        "fmrGroup": {
+          "type": "string"
+        },
+        "invoiceSeparation": {
+          "type": "string"
+        },
+        "pinGeneration": {
+          "type": "string"
+        },
+        "productUse": {
+          "$ref": "#/definitions/ProductUse"
+        },
+        "transactionDollarLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "transactionDollarLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "dailyDollarLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dailyDollarLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "weeklyDollarLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "weeklyDollarLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "monthlyDollarLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "monthlyDollarLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "dailyTransactionLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dailyTransactionLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "weeklyTransactionLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "weeklyTransactionLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "monthlyTransactionLimit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "monthlyTransactionLimitMode": {
+          "$ref": "#/definitions/HardSoftModes"
+        },
+        "purchaseDay": {
+          "$ref": "#/definitions/PurchaseDayEnum"
+        },
+        "purchaseDayMode": {
+          "$ref": "#/definitions/HardSoftExceptionModes"
+        },
+        "purchaseFromTimeBand1": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "purchaseToTimeBand1": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "purchaseDayBand1Mode": {
+          "$ref": "#/definitions/HardSoftExceptionModes"
+        },
+        "purchaseFromTimeBand2": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "purchaseToTimeBand2": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "purchaseDayBand2Mode": {
+          "$ref": "#/definitions/HardSoftExceptionModes"
+        },
+        "odometerValidation": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "odometerType": {
+          "$ref": "#/definitions/OdometerType"
+        },
+        "orgLevelsUsed": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "departmentRequired": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "companySelectsPin": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "companySelectsCardNumber": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "companySelectsVehicleNumber": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "companySelectsDriverNumber": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "cardsTiedToEntity": {
+          "$ref": "#/definitions/CardEntityType"
+        },
+        "cardPromptPattern": {
+          "$ref": "#/definitions/CardPromptPattern"
+        },
+        "embossingOnCard": {
+          "$ref": "#/definitions/EmbossingOnCard"
+        },
+        "embossingElement1": {
+          "$ref": "#/definitions/EmbossingElement"
+        },
+        "embossingElement2": {
+          "$ref": "#/definitions/EmbossingElement"
+        },
+        "embossingElement3": {
+          "$ref": "#/definitions/EmbossingElement"
+        },
+        "internalCustomer": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "status": {
+          "$ref": "#/definitions/StatusMode"
+        },
+        "retailCustomer": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "poRequired": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "billingFrequency": {
+          "type": "string"
+        },
+        "restrictionCode": {
+          "$ref": "#/definitions/CardRestrictionCode"
+        },
+        "custNo": {
+          "type": "string"
+        },
+        "externalDatabaseFilePath": {
+          "type": "string"
+        },
+        "isConsignment": {
+          "type": "boolean"
+        },
+        "minDriverNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxDriverNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "externalFMSNumber": {
+          "type": "string"
+        },
+        "isFuelMaster": {
+          "type": "boolean"
+        },
+        "isWinC6": {
+          "type": "boolean"
+        },
+        "isVoyager": {
+          "type": "boolean"
+        },
+        "departmentRequiredForDriver": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "departmentRequiredForCard": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "departmentRequiredForVehicle": {
+          "$ref": "#/definitions/BooleanEnum"
+        },
+        "cardAddressId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ProductUse": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "FuelOnly",
+        "FuelAndOther"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "HardSoftModes": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "SoftLimit",
+        "HardLimit",
+        "NotUsed"
+      ],
+      "enum": [
+        0,
+        1,
+        -1
+      ]
+    },
+    "PurchaseDayEnum": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "NotSelected",
+        "All",
+        "MonToFri",
+        "Sat",
+        "Sun",
+        "MonToSat",
+        "MonToFriAndSun",
+        "SatAndSun"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "HardSoftExceptionModes": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "SoftLimit",
+        "HardLimit",
+        "ExceptionReporting",
+        "NotUsed"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        -1
+      ]
+    },
+    "OdometerType": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Actual",
+        "Estimate"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "CardEntityType": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Vehicle",
+        "Driver",
+        "None"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "CardPromptPattern": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "PinNumber",
+        "DriverId",
+        "VehicleId",
+        "NoPrompt"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        9
+      ]
+    },
+    "EmbossingOnCard": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "VehicleDescriptionOrDriverName"
+      ],
+      "enum": [
+        6
+      ]
+    },
+    "EmbossingElement": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "NotSelected",
+        "VehicleLicense",
+        "VehicleDescription",
+        "VinNumber",
+        "DriverName",
+        "DepartmentName",
+        "DepartmentNumberAndName"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "CardRestrictionCode": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "NoIdNumberOrOdometerFuelAndOther",
+        "NoIdNumberOrOdometerFuelOnly",
+        "IdNumberOnlyFuelAndOther",
+        "IdNumberOnlyFuelOnly",
+        "OdometerOnlyFuelAndOther",
+        "OdometerOnlyFuelOnly",
+        "IdNumberAndOdometerFuelAndOther",
+        "IdNumberAndOdometerFuelOnly"
+      ],
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "GetFleetCustomerDetail_Model": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

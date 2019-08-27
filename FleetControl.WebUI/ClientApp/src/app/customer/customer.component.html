@@ -1,0 +1,55 @@
+Customers
+
+
+<!--<dx-button-->
+<!--  text="Click me"-->
+<!--  (onClick)="helloWorld()">-->
+<!--</dx-button>-->
+
+<!--<dx-data-grid-->
+<!--  id="gridContainer"-->
+<!--  [dataSource]="dataSource"-->
+<!--  [columns]="['id', 'lastName', 'firstName', 'theirEmployeeNumber']"-->
+<!--  [showBorders]="true">-->
+<!--</dx-data-grid>-->
+Test
+<dx-data-grid id="gridContainer"
+              [dataSource]="gridDataSource"
+              [remoteOperations]="true"
+              [showBorders]="true">
+
+<dxo-filter-row 
+        [visible]="'true'" 
+        [applyFilter]="currentFilter">
+      
+      </dxo-filter-row>
+
+  <dxi-column dataField="lastName"></dxi-column>
+  <dxi-column dataField="firstName"></dxi-column>
+  <dxi-column dataField="theirEmployeeNumber"></dxi-column>
+
+  <dxo-paging [pageSize]="12"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[8, 12, 20]"
+  ></dxo-pager>
+</dx-data-grid>
+
+<!--<dx-data-grid-->
+<!--  id="gridContainer"-->
+<!--  [dataSource]="dataSource"-->
+<!--  [columns]="['lastName', 'FirstName']"-->
+<!--  [showBorders]="true">-->
+
+
+<!--  <dxo-filter-row [visible]="true"></dxo-filter-row>-->
+<!--  <dxi-column [allowFiltering]="true" dataField="lastName" dataType="string"></dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="lastName"-->
+<!--    [filterOperations]="['contains', '=']"-->
+<!--    [(selectedFilterOperation)]="selectedOperation"-->
+<!--    [(filterValue)]="lastNameFilter">-->
+<!--  </dxi-column>-->
+
+<!--</dx-data-grid>-->

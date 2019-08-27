@@ -12,6 +12,11 @@ namespace FleetControl.Application.Commands.Customers.CreateCustomer
 {
     public class CreateFleetCustomer_Dto : IHaveCustomMapping
     {
+        public CreateFleetCustomer_Dto()
+        {
+            LockCode = " ";
+            Status = StatusMode.Active;
+        }
         public int BAID { get; set; }
 
         public string LiftingNumber { get; set; }

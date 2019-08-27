@@ -1,5 +1,6 @@
 using AutoMapper;
 using FleetControl.Application.Commands.CreateCustomer;
+using FleetControl.Application.Commands.Customers.CreateCustomer;
 using FleetControl.Application.Commands.UpdateCustomer;
 using FleetControl.Application.Infrastructure;
 using FleetControl.Application.Infrastructure.AutoMapper;
@@ -23,6 +24,10 @@ namespace FleetControl.WebUI
 {
     public class Startup
     {
+        // https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-2.2
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -44,7 +49,7 @@ namespace FleetControl.WebUI
             // Add MediatR (this is a bit clunky but it gets the job done for now).
             // I am choosing a handler in each of the Query and Command assemblies so that I can tell Mediatr to monitor them
             services.AddMediatR(typeof(GetFleetCustomerDetail_QueryHandler).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(CreateFleetCustomerCommand).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(CreateFleetCustomer_Command).GetTypeInfo().Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
@@ -54,6 +59,18 @@ namespace FleetControl.WebUI
 
             services.AddDbContext<IFleetControlDbContext, FleetControlDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FleetControlDatabase"), builder => builder.UseRowNumberForPaging()));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200",
+                                        "http://localhost:4505")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
 
             services.AddMvc();
 
@@ -78,6 +95,10 @@ namespace FleetControl.WebUI
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+
+            // Register the Swagger Services
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,11 +119,19 @@ namespace FleetControl.WebUI
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            //app.UseSwaggerUi3(settings =>
-            //{
-            //    settings.Path = "/api";
-            //    settings.DocumentPath = "/api/specification.json";
-            //});
+            //app.UseSwaggerUi3();
+
+
+            app.UseSwaggerUi3(settings =>
+            {
+                settings.Path = "/api";
+                settings.DocumentPath = "/api/specification.json";
+            });
+
+            //app.UseSwagger
+
+            app.UseCors(MyAllowSpecificOrigins);
+
 
             app.UseMvc(routes =>
             {

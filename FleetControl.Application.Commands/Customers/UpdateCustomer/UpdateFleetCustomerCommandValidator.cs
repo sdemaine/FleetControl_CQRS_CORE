@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FleetControl.Application.Commands.UpdateCustomer
 {
-    public class UpdateCustomerCommandValidator : AbstractValidator<UpdateFleetCustomerCommand>
+    public class UpdateCustomerCommandValidator : AbstractValidator<UpdateFleetCustomer_Command>
     {
         public UpdateCustomerCommandValidator()
         {

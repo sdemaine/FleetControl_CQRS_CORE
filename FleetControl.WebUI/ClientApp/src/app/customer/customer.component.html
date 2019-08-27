@@ -17,6 +17,14 @@ Test
               [dataSource]="gridDataSource"
               [remoteOperations]="true"
               [showBorders]="true">
+              
+      <dxo-editing
+              mode="cell"
+              [refreshMode]="refreshMode"
+              [allowAdding]="true"
+              [allowUpdating]="true"
+              [allowDeleting]="true">
+          </dxo-editing>
 
 <dxo-filter-row 
         [visible]="'true'" 
@@ -24,7 +32,8 @@ Test
       
       </dxo-filter-row>
 
-  <dxi-column dataField="lastName"></dxi-column>
+      <dxi-column dataField="id"></dxi-column>
+      <dxi-column dataField="lastName"></dxi-column>
   <dxi-column dataField="firstName"></dxi-column>
   <dxi-column dataField="theirEmployeeNumber"></dxi-column>
 

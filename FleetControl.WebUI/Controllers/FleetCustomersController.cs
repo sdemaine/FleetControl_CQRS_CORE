@@ -8,9 +8,13 @@ using FleetControl.Application.Commands.UpdateCustomer;
 using FleetControl.Application.Interfaces;
 using FleetControl.Application.Queries;
 using FleetControl.Application.Queries.Drivers;
+using FleetControl.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -57,12 +61,26 @@ namespace FleetControl.WebUI.Controllers
             return Ok(await Mediator.Send(new GetFleetCustomer_Query(customerId)));
         }
 
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status201Created)]
-        //public async Task<ActionResult> CreateCustomer(CreateFleetCustomer_Dto customer)
-        //{
-        //    await Mediator.Send(new CreateFleetCustomer_Command(customer));
-        //}
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult> CreateCustomer(CreateFleetCustomer_Dto customer)
+        {
+            return Ok(await Mediator.Send(new CreateFleetCustomer_Command(customer)));
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult> UpdateCustomer(int id, [FromBody] string values)
+        {
+            var driver = await _context.Driver.FirstOrDefaultAsync(x => x.Id == id);
+            JsonConvert.PopulateObject(values, driver);
+            _context.Driver.Update(driver);
+            await _context.SaveChangesAsync(new System.Threading.CancellationToken());
+
+            return Ok();
+            //return Ok(await Mediator.Send(new UpdateFleetCustomer_Command(id, customer)));
+        }
 
         //[HttpPatch]
         //[Route("{customerId}")]

@@ -14,7 +14,7 @@ using System;
 
 namespace FleetControl.Application.Commands.UpdateCustomer
 {
-    public class UpdateFleetCustomerCommand : IRequest
+    public class UpdateFleetCustomer_Command : IRequest
     {
         private readonly IFleetControlDbContext _context;
 
@@ -24,7 +24,7 @@ namespace FleetControl.Application.Commands.UpdateCustomer
 
         public Customer Customer { get; }
 
-        public UpdateFleetCustomerCommand(int id, JsonPatchDocument patchDoc, IFleetControlDbContext context)
+        public UpdateFleetCustomer_Command(int id, JsonPatchDocument patchDoc, IFleetControlDbContext context)
         {
             Id = id;
             PatchDoc = patchDoc;
@@ -38,7 +38,7 @@ namespace FleetControl.Application.Commands.UpdateCustomer
         }
 
 
-        public class Handler : IRequestHandler<UpdateFleetCustomerCommand, Unit>
+        public class Handler : IRequestHandler<UpdateFleetCustomer_Command, Unit>
         {
             private readonly IFleetControlDbContext _context;
             private readonly IMapper _mapper;
@@ -49,7 +49,7 @@ namespace FleetControl.Application.Commands.UpdateCustomer
                 _mapper = mapper;
             }
 
-            public async Task<Unit> Handle(UpdateFleetCustomerCommand request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(UpdateFleetCustomer_Command request, CancellationToken cancellationToken)
             {
                 _context.Customer.Update(request.Customer);
                 await _context.SaveChangesAsync(cancellationToken);

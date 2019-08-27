@@ -68,7 +68,8 @@ namespace FleetControl.WebUI
                     builder.WithOrigins("http://localhost:4200",
                                         "http://localhost:4505")
                                         .AllowAnyHeader()
-                                        .AllowAnyMethod();
+                                        .AllowAnyMethod()
+                                        ;
                 });
             });
 

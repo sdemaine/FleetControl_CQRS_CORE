@@ -14,34 +14,41 @@ Customers
 <!--</dx-data-grid>-->
 Test
 <dx-data-grid id="gridContainer"
-              [dataSource]="gridDataSource"
-              [remoteOperations]="true"
-              [showBorders]="true">
-              
-      <dxo-editing
-              mode="cell"
-              [refreshMode]="refreshMode"
-              [allowAdding]="true"
-              [allowUpdating]="true"
-              [allowDeleting]="true">
-          </dxo-editing>
+  [dataSource]="gridDataSource"
+  [remoteOperations]="true"
+  [showBorders]="true">
 
-<dxo-filter-row 
-        [visible]="'true'" 
-        [applyFilter]="currentFilter">
-      
-      </dxo-filter-row>
+  <dxo-export [enabled]="true"></dxo-export>
 
-      <dxi-column dataField="id"></dxi-column>
-      <dxi-column dataField="lastName"></dxi-column>
+  <dxo-editing
+    mode="cell"
+    [refreshMode]="refreshMode"
+    [allowAdding]="true"
+    [allowUpdating]="true"
+    [allowDeleting]="true">
+  </dxo-editing>
+
+  <dxo-filter-row
+    [visible]="'true'"
+    [applyFilter]="currentFilter">
+
+  </dxo-filter-row>
+
+  <dxi-column dataField="id"></dxi-column>
+  
+  <dxi-column dataField="lastName">
+    <dxi-validation-rule type="required"></dxi-validation-rule> 
+    <dxi-validation-rule type="stringLength" [min]="2" message="Last name must be at least 2 digits"></dxi-validation-rule>
+    <dxi-validation-rule type="stringLength" [max]="50" message="Last name cannot exceed 50 digits"></dxi-validation-rule>
+  </dxi-column>
+
   <dxi-column dataField="firstName"></dxi-column>
   <dxi-column dataField="theirEmployeeNumber"></dxi-column>
 
   <dxo-paging [pageSize]="12"></dxo-paging>
   <dxo-pager
     [showPageSizeSelector]="true"
-    [allowedPageSizes]="[8, 12, 20]"
-  ></dxo-pager>
+    [allowedPageSizes]="[8, 12, 20]"></dxo-pager>
 </dx-data-grid>
 
 <!--<dx-data-grid-->

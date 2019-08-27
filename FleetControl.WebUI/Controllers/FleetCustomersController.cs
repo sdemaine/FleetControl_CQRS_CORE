@@ -1,4 +1,5 @@
 
+using AutoMapper;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Data.ResponseModel;
 using DevExtreme.AspNet.Mvc;
@@ -25,10 +26,12 @@ namespace FleetControl.WebUI.Controllers
     public class FleetCustomersController : BaseController
     {
         private IFleetControlDbContext _context;
+        private readonly IMapper _mapper;
 
-        public FleetCustomersController(IFleetControlDbContext context)
+        public FleetCustomersController(IFleetControlDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -73,12 +76,14 @@ namespace FleetControl.WebUI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult> UpdateCustomer(int id, [FromBody] string values)
         {
-            var driver = await _context.Driver.FirstOrDefaultAsync(x => x.Id == id);
-            JsonConvert.PopulateObject(values, driver);
-            _context.Driver.Update(driver);
-            await _context.SaveChangesAsync(new System.Threading.CancellationToken());
-
+            await Mediator.Send(new UpdateFleetDriver_Command(id, values, _context, _mapper));
             return Ok();
+
+            //var driver = await _context.Driver.FirstOrDefaultAsync(x => x.Id == id);
+            //JsonConvert.PopulateObject(values, driver);
+            //_context.Driver.Update(driver);
+            //await _context.SaveChangesAsync(new System.Threading.CancellationToken());
+
             //return Ok(await Mediator.Send(new UpdateFleetCustomer_Command(id, customer)));
         }
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -6,12 +6,24 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="19.1.5" />
     <PackageReference Include="MediatR" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FleetControl.Application\FleetControl.Application.csproj" />
     <ProjectReference Include="..\FleetControl.Core\FleetControl.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CustomerPricingGroups\" />
+    <Folder Include="DailyAccountMaintenance\DAMCard\" />
+    <Folder Include="DailyAccountMaintenance\DAMDriver\" />
+    <Folder Include="DailyAccountMaintenance\DAMVehicle\" />
+    <Folder Include="Products\" />
+    <Folder Include="PurchaseOrders\" />
+    <Folder Include="RetailAdders\" />
+    <Folder Include="TransactionErrors\" />
   </ItemGroup>
 
 </Project>

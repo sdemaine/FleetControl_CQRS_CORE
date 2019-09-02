@@ -87,7 +87,7 @@ namespace FleetControl.Application.Commands.Customers.UpdateCustomer
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Driver, UpdateFleetDriver_Dto>()
+            configuration.CreateMap<Customer, UpdateFleetDriver_Dto>()
                 .ReverseMap().ForMember(x => x.Id, opt => opt.Ignore())
                 ;
         }

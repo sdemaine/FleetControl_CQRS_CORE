@@ -1,84 +1,19 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import { HttpClient, HttpClientModule, HttpParams, HttpHeaders } from '@angular/common/http';
-import { DxDataGridModule } from 'devextreme-angular';
-import DataSource from 'devextreme/data/data_source';
-import CustomStore from 'devextreme/data/custom_store';
-// import 'rxjs/add/operator/toPromise';
-
-
+import { Component, OnInit } from '@angular/core';
+import { FleetService } from '../shared/fleet.service';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styles: []
+  templateUrl: './customer.component.html'
 })
-
-
 export class CustomerComponent implements OnInit {
 
-  saleAmountHeaderFilter: any;
-  applyFilterTypes: any;
-  currentFilter: any;
-  showFilterRow: boolean;
-  showHeaderFilter: boolean;
+  pageTitle = "Customers";
+  columns: any = ['customerName', 'address']
+  dataSource = this.fleetSvc.getDevExpressCustomerDatasource();
 
-  ngOnInit(): void {
-    
+  constructor(private fleetSvc: FleetService) { }
+
+  ngOnInit() {
   }
-  gridDataSource: any = {};
-    constructor(@Inject(HttpClient) httpClient: HttpClient) {
 
-
-      
-        function isNotEmpty(value: any): boolean {
-            return value !== undefined && value !== null && value !== '';
-        }
-
-        this.gridDataSource = new DataSource({
-            key: 'id',
-            load: (loadOptions) => {
-                let params: HttpParams = new HttpParams();
-                [
-                    'skip', 
-                    'take', 
-                    'requireTotalCount', 
-                    'requireGroupCount', 
-                    'sort', 
-                    'filter', 
-                    'totalSummary', 
-                    'group', 
-                    'groupSummary'
-                ].forEach(function(i) {
-                    if(i in loadOptions && isNotEmpty(loadOptions[i])) 
-                        params = params.set(i, JSON.stringify(loadOptions[i]));
-                });
-                return httpClient.get('http://localhost:52467/api/FleetCustomers/DxGrid', { params: params })
-                    .toPromise()
-                    .then((result: any) => {
-                        return {
-                            data: result.data,
-                            totalCount: result.totalCount,
-                            summary: result.summary,
-                            groupCount: result.groupCount
-                        };
-                    }
-                );
-            },
-            
-            update: (key, values) => {
-              let headers = new HttpHeaders().set('Content-Type', 'application/json')
-              console.log('key');
-              console.log(key);
-              console.log('values');
-              console.log(values);
-              return httpClient.put('http://localhost:52467/api/FleetCustomers/' + key, JSON.stringify(JSON.stringify(values)), {headers: headers}).toPromise()
-              .then((result: any) => {
-                  return {
-                      data: 0
-                  };
-              }
-            )}
-
-        });
-    }
-  }
+}

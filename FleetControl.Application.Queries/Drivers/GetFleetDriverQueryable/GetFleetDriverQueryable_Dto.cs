@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 
 namespace FleetControl.Application.Queries.Drivers
 {
-    public class GetFleetDriverQueryable_ViewDto : IHaveCustomMapping
+    public class GetFleetDriverQueryable_Dto : IHaveCustomMapping
     {
         public int Id { get; set; }
+
+        public int CustomerId { get; set; }
         public string ExternalDriverId { get; set; }
 
         public string LastName { get; set; }
@@ -90,7 +92,7 @@ namespace FleetControl.Application.Queries.Drivers
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Driver, GetFleetDriverQueryable_ViewDto>()
+            configuration.CreateMap<Driver, GetFleetDriverQueryable_Dto>()
                 ;
         }
     }

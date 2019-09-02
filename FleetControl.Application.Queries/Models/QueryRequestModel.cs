@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FleetControl.Application.Queries
 {
-    public class QueryRequestModel
+    public class QueryRequestModel : IQueryRequestModel
     {
         public int Skip { get; set; }
 
@@ -21,5 +21,11 @@ namespace FleetControl.Application.Queries
         public bool ActiveOnly { get; set; }
 
         public int Baid { get; set; }
+
+        public int CustomerId { get; set; }
+
+        public DateTime? FromDate { get; set; }
+
+        public DateTime? ToDate { get; set; }
     }
 }

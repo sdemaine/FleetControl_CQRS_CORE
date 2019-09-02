@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FleetControl.Application.Queries.Drivers
 {
-    public class GetFleetDriverQueryable_QueryHandler : IRequestHandler<GetFleetDriverQueryable_Query, IEnumerable<GetFleetDriverQueryable_ViewDto>>
+    public class GetFleetDriverQueryable_QueryHandler : IRequestHandler<GetFleetDriverQueryable_Query, IEnumerable<GetFleetDriverQueryable_Dto>>
     {
         private readonly IFleetControlDbContext _context;
         private readonly IMapper _mapper;
@@ -24,38 +24,29 @@ namespace FleetControl.Application.Queries.Drivers
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<GetFleetDriverQueryable_ViewDto>> Handle(GetFleetDriverQueryable_Query request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetFleetDriverQueryable_Dto>> Handle(GetFleetDriverQueryable_Query request, CancellationToken cancellationToken)
         {
-            var customer = await _context.Customer.FirstOrDefaultAsync(x => x.Id == request.CustomerId);
+            var driversQuery = _context.Driver.AsQueryable();
 
-            var drivers = _context.Driver.Where(x => x.CustomerId == request.CustomerId).AsEnumerable();
+            if (request.CustomerId != 0)
+            {
+                driversQuery = driversQuery.Where(x => x.CustomerId == request.CustomerId);
+            }
 
-            //IEnumerable<GetFleetDriverQueryable_ViewDto> drivers = _mapper.Map<IEnumerable<GetFleetDriverQueryable_ViewDto>>(await _context.Driver.Where(x => x.CustomerId == request.CustomerId).ToAsyncEnumerable());
+            if (request.ActiveOnly)
+            {
+                driversQuery = driversQuery.Where(x => x.Status == Core.StatusMode.Active);
+            }
 
-            ////if (customer != null)
-            ////{
-            ////    //drivers = await _context.Driver.Where(x => x.CustomerId == customer.Id).ToListAsync();
-            ////    drivers = _mapper.Map<IQueryable<GetFleetDriverQueryable_ViewDto>>(_context.Driver.Where(x => x.CustomerId == request.CustomerId));
-            ////}
+            if (request.SearchQuery != null && request.SearchQuery != string.Empty)
+            {
+                driversQuery = driversQuery.Where(x => x.LastName.ToLower().Contains(request.SearchQuery.ToLower()) || x.FirstName.ToLower().Contains(request.SearchQuery.ToLower()));
+            }
 
-            return _mapper.Map<IEnumerable<GetFleetDriverQueryable_ViewDto>>(drivers);
+
+            var drivers = await driversQuery.ToListAsync();
+
+            return _mapper.Map<IEnumerable<GetFleetDriverQueryable_Dto>>(drivers);
         }
-
-        //public IEnumerable<GetFleetDriverQueryable_ViewDto> Handle(GetFleetDriverQueryable_Query request, CancellationToken cancellationToken)
-        //{
-        //    // var customer = await _context.Customer.FirstOrDefaultAsync(x => x.Id == request.CustomerId);
-
-        //    var drivers = _context.Driver.Where(x => x.CustomerId == request.CustomerId).AsEnumerable();
-
-        //    //IEnumerable<GetFleetDriverQueryable_ViewDto> drivers = _mapper.Map<IEnumerable<GetFleetDriverQueryable_ViewDto>>(await _context.Driver.Where(x => x.CustomerId == request.CustomerId).ToAsyncEnumerable());
-
-        //    ////if (customer != null)
-        //    ////{
-        //    ////    //drivers = await _context.Driver.Where(x => x.CustomerId == customer.Id).ToListAsync();
-        //    ////    drivers = _mapper.Map<IQueryable<GetFleetDriverQueryable_ViewDto>>(_context.Driver.Where(x => x.CustomerId == request.CustomerId));
-        //    ////}
-
-        //    return _mapper.Map<IEnumerable<GetFleetDriverQueryable_ViewDto>>(drivers);
-        //}
     }
 }

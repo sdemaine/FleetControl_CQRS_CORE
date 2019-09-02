@@ -90,7 +90,7 @@ namespace FleetControl.Application.Queries.Drivers
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Driver, GetFleetCustomerDriverList_ViewDto>()
+            configuration.CreateMap<Customer, GetFleetCustomerDriverList_ViewDto>()
                 ;
         }
     }

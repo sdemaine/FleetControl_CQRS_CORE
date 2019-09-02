@@ -8,6 +8,7 @@ using FleetControl.Application.Commands.Customers.UpdateCustomer;
 using FleetControl.Application.Commands.UpdateCustomer;
 using FleetControl.Application.Interfaces;
 using FleetControl.Application.Queries;
+using FleetControl.Application.Queries.Customers;
 using FleetControl.Application.Queries.Drivers;
 using FleetControl.Domain;
 using Microsoft.AspNetCore.Http;
@@ -16,13 +17,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace FleetControl.WebUI.Controllers
 {
-    [Route("api/FleetCustomers")]
+    [Route("api/Drivers")]
     public class FleetCustomersController : BaseController
     {
         private IFleetControlDbContext _context;
@@ -36,17 +38,29 @@ namespace FleetControl.WebUI.Controllers
 
         [HttpGet]
         [Route("DxGrid")]
-        public async Task<LoadResult> Drivers(DataSourceLoadOptions loadOptions)
+        public async Task<LoadResult> Customers(DataSourceLoadOptions loadOptions, [FromQuery] QueryRequestModel queryRequestModel)
         {
-            var response = DataSourceLoader.Load<GetFleetDriverQueryable_ViewDto>(await Mediator.Send(new GetFleetDriverQueryable_Query() { CustomerId = 101 }), loadOptions); ;
+            var response = DataSourceLoader.Load(await Mediator.Send(new GetCustomerQueryable_Query(queryRequestModel, _mapper)), loadOptions);
             return response;
-            //var query = _context.Driver.Where(x => x.CustomerId == 101);
-            //var response = DataSourceLoader.Load(query, loadOptions);
-            //response.totalCount = query.Count();
-
-            //var result = Task<LoadResult>.Run(() => response);
-            //return result;
         }
+
+        //[HttpGet]
+        //[Route("Drivers")]
+        //public async Task<object> Get(DataSourceLoadOptions loadOptions)
+        //{
+        //    var query = await Mediator.Send(new GetFleetDriverQueryable_Query() { CustomerId = 101 });
+        //    var response = await Task.Run(() => DataSourceLoader.Load<GetFleetDriverQueryable_Dto>(query, loadOptions));
+        //    return response;
+        //}
+
+
+        //[HttpGet]
+        //[Route("DxGrid")]
+        //public async Task<LoadResult> Drivers(DataSourceLoadOptions loadOptions)
+        //{
+        //    var response = DataSourceLoader.Load<GetFleetDriverQueryable_Dto>(await Mediator.Send(new GetFleetDriverQueryable_Query() { CustomerId = 101 }), loadOptions); ;
+        //    return response;
+        //}
 
 
         [HttpGet]

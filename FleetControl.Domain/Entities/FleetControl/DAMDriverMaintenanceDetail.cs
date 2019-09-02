@@ -9,6 +9,6 @@ namespace FleetControl.Domain
 
         public DAMDriver DAMDriver { get; set; }
 
-        public Driver Driver { get; set; }
+        public Customer Driver { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace FleetControl.Application.Queries
     {
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Driver, DriverDto>()
+            configuration.CreateMap<Customer, DriverDto>()
                //.ForMember(cDTO => cDTO.LastUpdated, opt => opt.Ignore())
                //.ForMember(cDTO => cDTO.ProductId, opt => opt.MapFrom(c => c.ProductId))
                //.ForMember(cDTO => cDTO.Name, opt => opt.MapFrom(c => c.CompanyName)

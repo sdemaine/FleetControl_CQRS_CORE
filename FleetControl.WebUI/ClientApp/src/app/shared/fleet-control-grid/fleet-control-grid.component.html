@@ -1,0 +1,45 @@
+<dx-data-grid id="customerGridContainer" class="dxgrid"
+  #grid
+  [dataSource]="dataSource"
+  [remoteOperations]="true"
+  [showBorders]="true"
+  [columnAutoWidth]="true"
+  [columns]="columns"
+  [width]="gridWidth"
+  [height]="gridHeight"
+  >
+
+  <dxo-export [enabled]="true"></dxo-export>
+
+  <dxo-column-chooser
+    [enabled]="true"
+    mode="select">
+    <!-- or "select" -->
+  </dxo-column-chooser>
+
+  <dxo-scrolling
+  [useNative]="false"
+  [scrollByContent]="true"
+  [scrollByThumb]="true"
+  showScrollbar="onHover"> <!-- or "onClick" | "always" | "never" -->
+</dxo-scrolling>
+
+  <dxo-editing
+    mode="cell"
+    [allowAdding]="true"
+    [allowUpdating]="true"
+    [allowDeleting]="true">
+  </dxo-editing>
+
+  <dxo-filter-row
+    [visible]="'true'"
+    [applyFilter]="currentFilter">
+
+  </dxo-filter-row>
+
+
+  <dxo-paging [pageSize]="12"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[8, 12, 20]"></dxo-pager>
+</dx-data-grid>

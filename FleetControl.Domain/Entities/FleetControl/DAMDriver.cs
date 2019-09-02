@@ -63,6 +63,6 @@ namespace FleetControl.Domain
 
         [ForeignKey("EntityId")]
         [DataMember]
-        public virtual Driver Driver { get; set; }
+        public virtual Customer Driver { get; set; }
     }
 }

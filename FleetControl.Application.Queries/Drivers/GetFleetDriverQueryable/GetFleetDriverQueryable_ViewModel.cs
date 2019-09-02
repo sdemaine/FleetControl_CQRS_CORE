@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace FleetControl.Application.Queries.Drivers
 {
-    public class GetFleetDriverQueryable_ViewModel
+    public class GetFleetDriverQueryable_ViewModel : QueryViewModel
     {
-        public IEnumerable<GetFleetDriverQueryable_ViewDto> Drivers { get; set; }
+        public IEnumerable<GetFleetDriverQueryable_Dto> Drivers { get; }
 
-        public int TotalCount { get; set; }
-
-        public int GroupCount { get; set; }
+        public GetFleetDriverQueryable_ViewModel(int recordCount, string previousPage, string nextPage, IEnumerable<GetFleetDriverQueryable_Dto> drivers) : base(recordCount, previousPage, nextPage)
+        {
+            Drivers = drivers;
+        }
     }
+
+    
 }

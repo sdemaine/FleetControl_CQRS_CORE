@@ -1,0 +1,35 @@
+
+  <dx-tree-list
+    id="tasks"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    parentIdExpr="parentId"
+    [expandedRowKeys]="[1, 2]"
+    [selectedRowKeys]="[1, 29, 42]"
+    [columnAutoWidth]="true"
+    [wordWrapEnabled]="true"
+    [showBorders]="true"
+    [showRowLines]="true">
+
+    <dxo-search-panel [visible]="true" width="250"></dxo-search-panel>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-scrolling mode="standard"></dxo-scrolling>
+
+    <dxo-paging
+      [enabled]="true"
+      [pageSize]="10">
+    </dxo-paging>
+    
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10, 20]"
+      [showInfo]="true">
+    </dxo-pager>
+
+
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="name"></dxi-column>
+    <dxi-column dataField="displayName"></dxi-column>
+    <dxi-column dataField="billToLocation"></dxi-column>
+    <dxi-column dataField="shipToLocation"></dxi-column>
+    <dxi-column dataField="customerDepartmentNumber"></dxi-column>

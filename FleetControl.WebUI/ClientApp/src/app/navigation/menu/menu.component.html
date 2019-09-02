@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="parent" >
+        <div class="child" style="float: left; height: 50px; padding-top: 14px; font-size: 1.2em; font-weight: 700; padding-right: 4px; padding-left: 2px;"> 
+          {{customerName}}
+        </div>
+        <div class="child" style="float: left; height: 50px;">
+            <div class="form">
+                <dx-menu
+                  #menu
+                  [title]="customerName"
+                  [dataSource]="fleetMenuItems"
+                  displayExpr="name"
+                  [showFirstSubmenuMode]="showFirstSubmenuModes"
+                  orientation="horizontal"
+                  submenuDirection="auto"
+                  [hideSubmenuOnMouseLeave]="false"
+                  (onItemClick)="itemClick($event)"
+                  class="dxmenuclass">
+                </dx-menu>
+              </div>
+              
+        </div>
+      </div> 
+</div>
+
+

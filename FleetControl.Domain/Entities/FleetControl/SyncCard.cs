@@ -254,7 +254,7 @@ namespace FleetControl.Domain
         public int? DriverId { get; set; }
 
         [DataMember]
-        public Driver Driver { get; set; }
+        public Customer Driver { get; set; }
 
         [DataMember]
         [Display(Name = "Vehicle")]

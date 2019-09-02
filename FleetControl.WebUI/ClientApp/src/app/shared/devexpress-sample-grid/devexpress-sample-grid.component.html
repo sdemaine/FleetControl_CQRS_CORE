@@ -1,0 +1,29 @@
+<dx-data-grid id="gridContainer"
+        [dataSource]="dataSource"
+        [showBorders]="true"
+        [width]="gridWidth"
+        [height]="gridHeight"
+        >
+    <dxi-column
+        dataField="id"
+        [width]="450"
+    ></dxi-column>
+    <dxi-column
+        dataField="firstName"
+        [width]="450"
+    ></dxi-column>
+    <dxi-column
+        dataField="lastName"
+        caption="Last Name"
+        dataType="number"
+        format="currency"
+        [width]="450"
+    ></dxi-column>
+    <dxi-column
+        dataField="theirEmployeeNumber"
+        caption="Sale Price"
+        dataType="number"
+        format="currency"
+        [width]="450"
+    ></dxi-column>
+</dx-data-grid>

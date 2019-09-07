@@ -12,9 +12,13 @@ namespace FleetControl.Domain
         public int NumberOfInvoices { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal TotalProductUnits { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal TotalProductAmount { get; set; }
 
         [DataMember]

@@ -17,21 +17,17 @@
     <None Remove="Configurations\Northwind\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Migrations\20180607065932_InitialCreate.cs" />
-    <Compile Remove="Migrations\20180607065932_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20180611041835_User.cs" />
-    <Compile Remove="Migrations\20180611041835_User.Designer.cs" />
-    <Compile Remove="Migrations\FleetControlContextModelSnapshot.cs" />
     <Compile Remove="FleetControlDbContext.cs" />
     <Compile Remove="FleetControlDbContextFactory.cs" />
     <Compile Remove="FleetControlInitializer.cs" />
-    <Compile Remove="Migrations\NorthwindContextModelSnapshot.cs" />
     <Compile Remove="NorthwindDbContext.cs" />
     <Compile Remove="NorthwindDbContextFactory.cs" />
     <Compile Remove="NorthwindInitializer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />

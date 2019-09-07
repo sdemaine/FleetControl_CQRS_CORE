@@ -99,18 +99,28 @@ namespace FleetControl.Domain
         public string ProductCode { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ProductAmount { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ProductUnits { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal CostPerUnit { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal CostPerMile { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal MilesPerGallon { get; set; }
 
         [DataMember]
@@ -129,21 +139,32 @@ namespace FleetControl.Domain
         public string Flags { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
         public Decimal ExemptFederalTax { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ExemptPrimaryMotorFuelTax { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ExemptSecondaryMotorFuelTax { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ExemptLocalSalesTax { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ExemptStateSalesTax { get; set; }
 
         [DataMember]
+
+        [Column(TypeName = "decimal(18,2)")]
         public Decimal ExemptMiscTax { get; set; }
 
         [DataMember]
@@ -246,15 +267,21 @@ namespace FleetControl.Domain
         public bool FooterStamped { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal ExemptTaxes { get; set; }
 
         [DataMember]
         public int InvoiceCount { get; set; }
         
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal TotalProductUnits { get; set; }
         
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public Decimal TotalProductAmount { get; set; }
         
         [DataMember]

@@ -64,22 +64,26 @@ namespace FleetControl.Domain
 
         [DataMember]
         [Display(Name = "Max Gallons Per Transaction")]
-        [Column("MaxGalTrn")]
+        [Column("MaxGalTrn", TypeName = "decimal(18,2)")]
+
         public decimal? MaxGallonsPerTransaction { get; set; }
 
         [DataMember]
         [Display(Name = "Max Gallons Per Day")]
-        [Column("MaxGalDay")]
+        [Column("MaxGalDay", TypeName = "decimal(18,2)")]
+
         public decimal? MaxGallonsPerDay { get; set; }
 
         [DataMember]
         [Display(Name = "Max Gallons Per Cycle")]
-        [Column("MaxGalCycl")]
+        [Column("MaxGalCycl", TypeName = "decimal(18,2)")]
+
         public decimal? MaxGallonsPerBillingCycle { get; set; }
 
         [DataMember]
         [Display(Name = "Max Motor Oil Dollars")]
-        [Column("MaxMotorOil")]
+        [Column("MaxMotorOil", TypeName = "decimal(18,2)")]
+
         public decimal? MaxMotorOilDollars { get; set; }
 
         [DataMember]
@@ -88,7 +92,8 @@ namespace FleetControl.Domain
 
         [DataMember]
         [Display(Name = "Last Gallon Amount")]
-        [Column("LastGallons")]
+        [Column("LastGallons", TypeName = "decimal(18,2)")]
+
         public decimal? LastGallonsAmount { get; set; }
 
         [DataMember]
@@ -285,7 +290,7 @@ namespace FleetControl.Domain
 
         [DataMember]
         [Display(Name = "Quantity")]
-        [Column("QTY")]
+        [Column("QTY", TypeName = "decimal(18,2)")]
         public decimal? Quantity { get; set; }    //.. Sum of gallons to date of transactions by this vehicle record
 
         [DataMember]

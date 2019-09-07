@@ -96,36 +96,48 @@ namespace FleetControl.Domain
         public int ProductId { get; set; }
 
         [DataMember]
-        [Column("Price")]
+        [Column("Price", TypeName = "decimal(18,2)")]
+
         public decimal? CostPerUnit { get; set; }
 
         [DataMember]
-        [Column("AmtGal")]
+        [Column("AmtGal", TypeName = "decimal(18,2)")]
+
         public decimal? TotalProductUnits { get; set; }
 
         [DataMember]
+        [Column("PumpPrice", TypeName = "decimal(18,2)")]
+
         public decimal PumpPrice { get; set; }
 
         [DataMember]
+        [Column("CostPerMile", TypeName = "decimal(18,2)")]
+
         public decimal? CostPerMile { get; set; }
 
         [DataMember]
+        [Column("MilesPerGallon", TypeName = "decimal(18,2)")]
+
         public decimal? MilesPerGallon { get; set; }
 
         [DataMember]
-        [Column("FedEx")]
+        [Column("FedEx", TypeName = "decimal(18,2)")]
+
         public decimal? FederalExciseTaxRate { get; set; }   //.. Federal Excise Tax rate per gallon at location (calculated by Sprague, round to three decimal precision).
         //.. Some Customers exempt from Fed Excise Tax EXCEPT Fed LUST Tax value should be 0.001 if exempted; 0.184 when not exempt.
         //.. Same value as FederalExciseRate.  3 decimal precision.
         [DataMember]
-        [Column("StaEx")]
+        [Column("StaEx", TypeName = "decimal(18,2)")]
+
         public decimal? StateExciseTaxPerGallonRate { get; set; }
 
         [DataMember]
-        [Column("StaSales")]
+        [Column("StaSales", TypeName = "decimal(18,2)")]
+
         public decimal? StateSalesTaxPerGallonRate { get; set; }
 
         [DataMember]
+        [Column("OtherTax", TypeName = "decimal(18,2)")]
         public decimal? OtherTax { get; set; }
 
         [DataMember]
@@ -148,12 +160,18 @@ namespace FleetControl.Domain
         //.. D = Pattern Discrepancy (Time/Day) on  Vehicle, E = Estimated Odometer, F = Full Service, G = MPG Variance
         //.. M = Manual Transaction, P = Product Variance, X = Excess Vehicle Capacity
         [DataMember]
+        [Column("CustomerSalesAmount", TypeName = "decimal(18,2)")]
+
         public decimal? CustomerSalesAmount { get; set; }
 
         [DataMember]
+        [Column("UnpaidTaxes", TypeName = "decimal(18,2)")]
+
         public decimal? UnpaidTaxes { get; set; }
 
         [DataMember]
+        [Column("StationReimbursementAmount", TypeName = "decimal(18,2)")]
+
         public decimal? StationReimbursementAmount { get; set; }
 
         [DataMember]
@@ -162,6 +180,8 @@ namespace FleetControl.Domain
         //.. Populated by selected Tax area on location (NAtionalDirectory).
 
         [DataMember]
+        [Column("StationReimbursementActual", TypeName = "decimal(18,2)")]
+
         public decimal? StationReimbursementActual { get; set; }
 
         [DataMember]
@@ -178,36 +198,58 @@ namespace FleetControl.Domain
         public string SRAExternalDocumentNumber { get; set; }
 
         [DataMember]
+        [Column("FederalExciseTaxAmount", TypeName = "decimal(18,2)")]
+
         public decimal? FederalExciseTaxAmount { get; set; }
 
         [DataMember]
+        [Column("StateExciseTaxAmount", TypeName = "decimal(18,2)")]
+
         public decimal? StateExciseTaxAmount { get; set; }
 
         [DataMember]
+        [Column("PBTAmount", TypeName = "decimal(18,2)")]
+
         public decimal? PBTAmount { get; set; }
 
         [DataMember]
+        [Column("SalesTaxPerGallonAmount", TypeName = "decimal(18,2)")]
+
         public decimal? SalesTaxPerGallonAmount { get; set; }
 
         [DataMember]
+        [Column("SalesTaxPercentAmount", TypeName = "decimal(18,2)")]
+
         public decimal? SalesTaxPercentAmount { get; set; }
 
         [DataMember]
+        [Column("PBTRate", TypeName = "decimal(18,2)")]
+
         public decimal? PBTRate { get; set; }
 
         [DataMember]
+        [Column("SalesTaxPerGallonRate", TypeName = "decimal(18,2)")]
+
         public decimal? SalesTaxPerGallonRate { get; set; }
 
         [DataMember]
+        [Column("SalesTaxPercentRate", TypeName = "decimal(18,2)")]
+
         public decimal? SalesTaxPercentRate { get; set; }
 
         [DataMember]
+        [Column("ProductBasePrice", TypeName = "decimal(18,2)")]
+
         public decimal? ProductBasePrice { get; set; }
 
         [DataMember]
+        [Column("SolarcProductPrice", TypeName = "decimal(18,2)")]
+
         public decimal? SolarcProductPrice { get; set; }
 
         [DataMember]
+        [Column("FullPrice", TypeName = "decimal(18,2)")]
+
         public decimal? FullPrice { get; set; }
 
         [DataMember]
@@ -217,7 +259,8 @@ namespace FleetControl.Domain
         public DateTime VoyagerPostDate { get; set; }
 
         [DataMember]
-        [Column("PerUnitCOGS")]
+        [Column("PerUnitCOGS", TypeName = "decimal(18,2)")]
+
         public decimal PerUnitCostOfGoodsSold { get; set; }
 
         [DataMember]

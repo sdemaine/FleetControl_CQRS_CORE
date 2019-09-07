@@ -96,6 +96,8 @@ namespace FleetControl.Domain
         public int UseCount { get; set; }
 
         [DataMember]
+        [Column("Quantity", TypeName = "decimal(18,2)")]
+
         public decimal Quantity { get; set; }
 
         [DataMember]

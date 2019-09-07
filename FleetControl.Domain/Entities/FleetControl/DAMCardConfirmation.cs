@@ -36,26 +36,31 @@ namespace FleetControl.Domain
         public DateTime? Date1stPur { get; set; }    //.. Date of 1st Purchase
 
         [DataMember]
-        [Column("MaxGalTrn")]
+        [Column("MaxGalTrn", TypeName = "decimal(18,2)")]
+
         public decimal? MaxGallonsPerTransaction { get; set; }
 
         [DataMember]
-        [Column("MaxGalDay")]
+        [Column("MaxGalDay", TypeName = "decimal(18,2)")]
+
         public decimal? MaxGallonsPerDay { get; set; }
 
         [DataMember]
-        [Column("MaxGalCycl")]
+        [Column("MaxGalCycl", TypeName = "decimal(18,2)")]
+
         public decimal? MaxGallonsPerBillingCycle { get; set; }
 
         [DataMember]
-        [Column("MaxMotorOil")]
+        [Column("MaxMotorOil", TypeName = "decimal(18,2)")]
+
         public decimal? MaxMotorOilDollars { get; set; }
 
         [DataMember]
         public DateTime? LastActivityDate { get; set; }
 
         [DataMember]
-        [Column("LastGallons")]
+        [Column("LastGallons", TypeName = "decimal(18,2)")]
+
         public decimal? LastGallonsAmount { get; set; }
 
         [DataMember]
@@ -185,7 +190,8 @@ namespace FleetControl.Domain
         public int? UseCount { get; set; }   //.. Count of transactions for this card
 
         [DataMember]
-        [Column("QTY")]
+        [Column("QTY", TypeName = "decimal(18,2)")]
+
         public decimal? Quantity { get; set; }    //.. Sum of gallons to date of transactions by this vehicle record
 
         [DataMember]

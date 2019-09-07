@@ -82,7 +82,7 @@ namespace FleetControl.Application.Queries.Cards
         public bool IsConsignment { get; set; }
 
         public DateTime? ExternalDeleteDate { get; set; }
-
+        
         public bool IsFuelMaster { get; set; }
 
         public bool IsWinC6 { get; set; }

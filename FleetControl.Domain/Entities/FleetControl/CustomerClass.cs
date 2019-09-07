@@ -23,12 +23,18 @@ namespace FleetControl.Domain
         public string Description { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal MaxFuel { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal MinRange { get; set; }
 
         [DataMember]
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal MaxRange { get; set; }
 
         [DataMember]

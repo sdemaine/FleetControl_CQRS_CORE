@@ -176,18 +176,28 @@ namespace FleetControl.Domain
         public string SRAExternalDocumentNumber { get; set; }
 
         [DataMember]
+        [Column("FederalExciseTaxAmount", TypeName = "decimal(18,2)")]
+
         public decimal? FederalExciseTaxAmount { get; set; }
 
         [DataMember]
+        [Column("StateExciseTaxAmount", TypeName = "decimal(18,2)")]
+
         public decimal? StateExciseTaxAmount { get; set; }
 
         [DataMember]
+        [Column("PBTAmount", TypeName = "decimal(18,2)")]
+
         public decimal? PBTAmount { get; set; }
 
         [DataMember]
+        [Column("SalesTaxPerGallonAmount", TypeName = "decimal(18,2)")]
+
         public decimal? SalesTaxPerGallonAmount { get; set; }
 
         [DataMember]
+        [Column("SalesTaxPercentAmount", TypeName = "decimal(18,2)")]
+
         public decimal? SalesTaxPercentAmount { get; set; }
 
         [DataMember]

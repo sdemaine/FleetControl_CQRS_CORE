@@ -104,11 +104,14 @@ namespace FleetControl.Domain
         public string ProductType { get; set; }
 
         [DataMember]
-        [Column("QTY")]
+        [Column("QTY", TypeName = "decimal(18,2)")]
+
+
         public decimal Quantity { get; set; }
 
         [DataMember]
-        [Column("CustomerPrice")]
+        [Column("CustomerPrice", TypeName = "decimal(18,2)")]
+
         public decimal CustomerPrice { get; set; }
 
         [DataMember]
@@ -116,11 +119,13 @@ namespace FleetControl.Domain
         public double MerchantPrice { get; set; }
 
         [DataMember]
-        [Column("NetworkPrice")]
+        [Column("NetworkPrice", TypeName = "decimal(18,2)")]
+
         public decimal NetworkPrice { get; set; }
 
         [DataMember]
-        [Column("RetailPrice")]
+        [Column("RetailPrice", TypeName = "decimal(18,2)")]
+
         public decimal RetailPrice { get; set; }
 
         [DataMember]

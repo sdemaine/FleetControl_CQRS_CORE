@@ -92,7 +92,8 @@ namespace FleetControl.Domain
         public double AmountOfGallons { get; set; }
 
         [DataMember]
-        [Column("Price")]
+        [Column("Price", TypeName = "decimal(18,2)")]
+
         public decimal Price { get; set; }
 
         [DataMember]
@@ -106,7 +107,8 @@ namespace FleetControl.Domain
         public string ErrorCondition { get; set; }
 
         [DataMember]
-        [Column("StationReimbursementAmount")]
+        [Column("StationReimbursementAmount", TypeName = "decimal(18,2)")]
+
         public decimal StationReimbursementAmount { get; set; }
 
         [DataMember]

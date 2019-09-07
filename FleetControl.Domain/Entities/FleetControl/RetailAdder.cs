@@ -10,6 +10,8 @@ namespace FleetControl.Domain
     {
         public int CustomerId { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
+
         public decimal AdderAmount { get; set; }
 
         public DateTime StartDate { get; set; }

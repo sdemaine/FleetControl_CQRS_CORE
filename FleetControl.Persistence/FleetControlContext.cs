@@ -2,12 +2,15 @@
 using FleetControl.Application.Interfaces;
 using FleetControl.Core;
 using FleetControl.Domain;
+using FleetControl.Persistence.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FleetControl.Persistence
 {
-    public partial class FleetControlDbContext : DbContext, IFleetControlDbContext
+    public partial class FleetControlDbContext : IdentityDbContext<ApplicationUser>, IFleetControlDbContext
     {
         public FleetControlDbContext(DbContextOptions<FleetControlDbContext> options)
             : base(options)
@@ -118,6 +121,7 @@ namespace FleetControl.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(FleetControlDbContext).Assembly);
         }
 
